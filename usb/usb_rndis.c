@@ -85,7 +85,6 @@ static void usb_rndis_ep_send_callback(int size)
 static void usb_rndis_ep_recv_callback(int size)
 {
   rndis_recv_callback(received, size);
-  usb_rndis_recv_renew();
 }
 
 bool usb_class_handle_request(usb_request_t *request)
