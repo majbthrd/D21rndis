@@ -150,9 +150,7 @@ err_t output_fn(struct netif *netif, struct pbuf *p, ip_addr_t *ipaddr)
 
 err_t linkoutput_fn(struct netif *netif, struct pbuf *p)
 {
-    int i;
-
-    for (i = 0; i < 200; i++)
+    for (;;)
     {
         if (usb_rndis_can_xmit()) goto ok_to_xmit;
         usb_task();
@@ -205,7 +203,7 @@ static void init_periph(void)
 
 bool dns_query_proc(const char *name, ip_addr_t *addr)
 {
-    if (strcmp(name, "run.stm") == 0 || strcmp(name, "www.run.stm") == 0)
+    if (strcmp(name, "run.sam") == 0 || strcmp(name, "www.run.sam") == 0)
     {
         addr->addr = *(uint32_t *)ipaddr;
         return true;
