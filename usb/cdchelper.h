@@ -52,7 +52,7 @@ struct cdc_interface
       .cdc_association = { \
         /*Interface Association Descriptor */ \
         .bLength            = sizeof(struct interface_association_descriptor), /* Interface Association Descriptor size */ \
-        .bDescriptorType    = USB_INTERFACE_DESCRIPTOR_ASSOCIATION,            /* Interface Association */ \
+        .bDescriptorType    = USB_INTERFACE_ASSOCIATION_DESCRIPTOR,            /* Interface Association */ \
         .bFirstInterface    = COMMAND_ITF,                                     /* First Interface of Association */ \
         .bInterfaceCount    = 0x02,                                            /* quantity of interfaces in association */ \
         .bFunctionClass     = 0x02,                                            /* Communication Interface Class */ \
@@ -111,7 +111,7 @@ struct cdc_interface
       .ctl_ep = { \
         /* Command Endpoint Descriptor*/ \
         .bLength            = sizeof(struct endpoint_descriptor),              /* Endpoint Descriptor size */ \
-        .bDescriptorType    = USB_DESC_TYPE_ENDPOINT,                          /* Endpoint */ \
+        .bDescriptorType    = USB_ENDPOINT_DESCRIPTOR,                         /* Endpoint */ \
         .bEndpointAddress   = COMMAND_EP,                                      \
         .bmAttributes       = 0x03,                                            /* Interrupt */ \
         .wMaxPacketSize     = USB_UINT16(CDC_CMD_PACKET_SIZE),                 \
@@ -134,7 +134,7 @@ struct cdc_interface
       .ep_in = { \
         /* Data Endpoint OUT Descriptor */ \
         .bLength            = sizeof(struct endpoint_descriptor),              /* Endpoint Descriptor size */ \
-        .bDescriptorType    = USB_DESC_TYPE_ENDPOINT,                          /* Endpoint */ \
+        .bDescriptorType    = USB_ENDPOINT_DESCRIPTOR,                         /* Endpoint */ \
         .bEndpointAddress   = DATAOUT_EP,                                      \
         .bmAttributes       = 0x02,                                            /* Bulk */ \
         .wMaxPacketSize     = USB_UINT16(USB_FS_MAX_PACKET_SIZE),              \
@@ -144,7 +144,7 @@ struct cdc_interface
       .ep_out = { \
         /* Data Endpoint IN Descriptor*/ \
         .bLength            = sizeof(struct endpoint_descriptor),              /* Endpoint Descriptor size */ \
-        .bDescriptorType    = USB_DESC_TYPE_ENDPOINT,                          /* Endpoint */ \
+        .bDescriptorType    = USB_ENDPOINT_DESCRIPTOR,                         /* Endpoint */ \
         .bEndpointAddress   = DATAIN_EP,                                       \
         .bmAttributes       = 0x02,                                            /* Bulk */ \
         .wMaxPacketSize     = USB_UINT16(USB_FS_MAX_PACKET_SIZE),              \
