@@ -61,10 +61,10 @@
 #include "rndis.h"
 
 static struct netif netif_data;
-static uint8_t hwaddr[6]  = {0x20,0x89,0x84,0x6A,0x96,0x00};
-static uint8_t ipaddr[4]  = {192, 168, 7, 1};
-static uint8_t netmask[4] = {255, 255, 255, 0};
-static uint8_t gateway[4] = {0, 0, 0, 0};
+static const uint8_t hwaddr[6]  = {0x20,0x89,0x84,0x6A,0x96,0x00};
+static const uint8_t ipaddr[4]  = {192, 168, 7, 1};
+static const uint8_t netmask[4] = {255, 255, 255, 0};
+static const uint8_t gateway[4] = {0, 0, 0, 0};
 static struct pbuf *received_frame;
 
 static dhcp_entry_t entries[] =
@@ -75,7 +75,7 @@ static dhcp_entry_t entries[] =
     { {0}, {192, 168, 7, 4}, {255, 255, 255, 0}, 24 * 60 * 60 }
 };
 
-static dhcp_config_t dhcp_config =
+static const dhcp_config_t dhcp_config =
 {
     {192, 168, 7, 1}, 67, /* server address, port */
     {192, 168, 7, 1},     /* dns server */
@@ -171,6 +171,9 @@ static void device_init(void)
 
 void usb_rndis_recv_callback(const uint8_t *data, int size)
 {
+  if (received_frame)
+    return;
+
   received_frame = pbuf_alloc(PBUF_RAW, size, PBUF_POOL);
   if (!received_frame) 
     return;
