@@ -5,6 +5,8 @@ Inspired by [lrndis](https://github.com/fetisov/lrndis), this is a RNDIS impleme
 
 As with [lrndis](https://github.com/fetisov/lrndis), [lwIP](https://savannah.nongnu.org/projects/lwip/) is utilized to provide a rudimentary TCP/IP stack, DHCP server, and web server. 
 
+This is closely related to [D21ecm](https://github.com/majbthrd/D21ecm/), a CDC-ECM implementation, and [D21eem](https://github.com/majbthrd/D21eem/), a CDC-EEM implementation.  All implementations share most of the same code, differing only in the driver.
+
 ## Usage
 
 Due to the high memory usage of TCP/IP, a SAMD21 with 32kBytes of RAM and at least 128kBytes of FLASH is needed.  Development was done with the [SAMD21 Xplained Pro](https://www.microchip.com/developmenttools/ProductDetails/ATSAMD21-XPRO) (ATSAMD21J18), but the [SparkFun SAMD21 Mini Breakout](https://www.sparkfun.com/products/13664) (ATSAMD21G18) and [Arduino Zero](https://store.arduino.cc/usa/arduino-zero) (ATSAMD21G18) ought to also be feasible.
