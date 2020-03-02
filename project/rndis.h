@@ -1,4 +1,8 @@
 /*
+  This is very loosely derived from lrndis/usbd_rndis_core.c from https://github.com/fetisov/lrndis
+*/
+
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2015 by Sergey Fetisov <fsenok@gmail.com>

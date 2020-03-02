@@ -1,4 +1,9 @@
 /*
+  The original version of this code was lrndis/usbd_rndis_core.c from https://github.com/fetisov/lrndis
+  It has since been overhauled to suit this application
+*/
+
+/*
  * The MIT License (MIT)
  *
  * Copyright (c) 2015 by Sergey Fetisov <fsenok@gmail.com>
