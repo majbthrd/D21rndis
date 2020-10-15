@@ -152,6 +152,18 @@ struct cdc_interface
       } \
     },
 
+#if 0
+  /* Windows XP */
+  #define RNDIS_ITF_CLASS    0xE0
+  #define RNDIS_ITF_SUBCLASS 0x01
+  #define RNDIS_ITF_PROTOCOL 0x03
+#else
+  /* Windows 7+ */
+  #define RNDIS_ITF_CLASS    224
+  #define RNDIS_ITF_SUBCLASS 1
+  #define RNDIS_ITF_PROTOCOL 3
+#endif
+
 #define RNDIS_DESCRIPTOR(COMMAND_ITF, DATA_ITF, COMMAND_EP, DATAOUT_EP, DATAIN_EP) \
     { \
       .cdc_association = { \
@@ -160,9 +172,9 @@ struct cdc_interface
         .bDescriptorType    = USB_INTERFACE_ASSOCIATION_DESCRIPTOR,            /* Interface Association */ \
         .bFirstInterface    = COMMAND_ITF,                                     /* First Interface of Association */ \
         .bInterfaceCount    = 0x02,                                            /* quantity of interfaces in association */ \
-        .bFunctionClass     = 224,                                             /* Wireless */ \
-        .bFunctionSubClass  = 0x01,                                            /* Radio Frequency */ \
-        .bFunctionProtocol  = 0x03,                                            /* RNDIS */ \
+        .bFunctionClass     = RNDIS_ITF_CLASS,                                 \
+        .bFunctionSubClass  = RNDIS_ITF_SUBCLASS,                              \
+        .bFunctionProtocol  = RNDIS_ITF_PROTOCOL,                              \
         .iFunction          = 0x00,                                            \
       }, \
  \
@@ -173,9 +185,9 @@ struct cdc_interface
         .bInterfaceNumber   = COMMAND_ITF,                                     /* Number of Interface */ \
         .bAlternateSetting  = 0x00,                                            /* Alternate setting */ \
         .bNumEndpoints      = 0x01,                                            /* One endpoints used */ \
-        .bInterfaceClass    = 224,                                             /* Wireless */ \
-        .bInterfaceSubclass = 0x01,                                            /* Radio Frequency */ \
-        .bInterfaceProtocol = 0x03,                                            /* RNDIS */ \
+        .bInterfaceClass    = RNDIS_ITF_CLASS,                                 /* Wireless */ \
+        .bInterfaceSubclass = RNDIS_ITF_SUBCLASS,                              /* Radio Frequency */ \
+        .bInterfaceProtocol = RNDIS_ITF_PROTOCOL,                              /* RNDIS */ \
         .iInterface         = 0x00,                                            \
       }, \
  \
