@@ -134,6 +134,7 @@ void usb_rndis_xmit_packet(uint8_t *header, int header_size, struct pbuf *p, int
   {
     memcpy(data, (char *)q->payload, q->len);
     data += q->len;
+    if (q->tot_len == q->len) break;
   }
 
   can_xmit = false;
